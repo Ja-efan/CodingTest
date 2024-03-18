@@ -24,7 +24,7 @@ def solution(s:str)-> list :
         len_new = len(s_new)
         answer[1] += (len_old - len_new) # 제거된 0의 개수 추가 
         
-        s = str(format(len_new, 'b'))
+        s = str(format(len_new, 'b')) # format(x, 'b') -> x를 'b'inary로 변경 
         answer[0] += 1
 
     return answer
