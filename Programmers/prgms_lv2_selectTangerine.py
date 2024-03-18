@@ -1,31 +1,48 @@
 import numpy as np
 
 def solution(k, tangerine):
-    """
-    tangerine 에서 k 개의 귤을 선택할 때, 크기를 최소로 선택
-    사이즈 별로 개수를 세서, 정렬 후 큰 것 부터 선택해서 k를 맞춘다
-    """
-    answer = 0
-    sizes = np.unique(tangerine) # 바구니에 담긴 귤의 크기 
-    num_size = [0 for i in range(len(sizes))] # 사이즈 별 담긴 귤의 개수 
-    # print(num_size) 
-    # print(sizes)
-    for i in tangerine:
-        for j in range(len(sizes)):
-            if i == sizes[j]:
-                num_size[j] = num_size[j] + 1
     
-    print(np.sort(num_size)[::-1])
-    num_size = np.sort(num_size)[::-1]
-    
-    count = 0
-    for i in num_size :
-        if answer == k :
-            break
-        elif answer + i > k :
-            continue
-        answer = answer + i
-        count = count + 1
+    """
+    solution(k, tangerine):
 
-        
-    return count 
+
+    Args :
+    - k : 고르고자 하는 귤의 개수 
+    - tangerine : 귤의 사이즈를 담고 있는 리스트
+
+    Returns :
+    - int : k개의 귤을 고르기 위한 귤 사이즈의 최소 개수
+    """
+
+    size_counts = {} # dict 생성 
+    for size in tangerine:
+        if size in size_counts:
+            size_counts[size] += 1
+        else : 
+            size_counts[size] = 1
+    
+    # print(size_counts)
+
+    size_counts = sorted(size_counts.items(), key=lambda x:x[1], reverse=True)
+
+    # print(size_counts)
+
+    total_selected = 0
+    distinct_sizes = 0
+    for size, count in size_counts:
+        if total_selected + count <= k:
+            total_selected += count
+            distinct_sizes += 1
+        else: # total_selcted + count > k 
+            distinct_sizes += 1
+            break
+        if total_selected == k :
+            break
+
+    return distinct_sizes
+
+
+# # test case
+# tangerine = [1, 3, 2, 5, 4, 5, 2, 3]
+# k = 5
+# print(solution(k,tangerine))
