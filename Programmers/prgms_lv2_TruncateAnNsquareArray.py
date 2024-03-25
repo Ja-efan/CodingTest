@@ -45,6 +45,7 @@ def solution(n, left, right):
     print(low_left, col_left)
     print(low_right, col_right)
 
-            
+
+# test case 
 print(solution(3,2,5))
 print(solution(4,7,14))
