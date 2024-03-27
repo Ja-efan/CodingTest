@@ -21,7 +21,7 @@ def solution(n, left, right):
 
     """
     """
-    # soluition 1
+    # soluition 1 -> time out 
     # 2차원 배열 생성
     matrix = []
     for i in range(n):
@@ -40,11 +40,15 @@ def solution(n, left, right):
     """
 
     # solution 2
-    low_left, col_left = divmod(left,n)
-    low_right, col_right = divmod(right,n)
-
-    print(low_left, col_left)
-    print(low_right, col_right)
+    # index의 몫과 나머지로 해당 위치의 값을 알 수 있음.
+    
+    answer = []
+    for i in range(left, right+1):
+        row, col = divmod(i, n)
+        val = max(row, col) + 1
+        answer.append(val)
+    
+    return answer
 
 
 # test case 
