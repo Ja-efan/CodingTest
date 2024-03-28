@@ -39,4 +39,9 @@ def solution(citations):
 # test case 
 print(solution([3,0,6,1,6,2,2]))
 print(solution([0,1,5,5,6,3,0,0]))
+
+"""
+아래 케이스의 경우 H-Index는 1이 아닌 2가 된다. 
+'h번 이상된 논문'에서 h가 의미하는 숫자가 꼭 발표한 논문들의 인용 횟수일 필요는 없다.
+"""
 print(solution([1,10,20]))
