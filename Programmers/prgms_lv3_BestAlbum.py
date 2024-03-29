@@ -27,10 +27,10 @@ def solution(genres:list, plays:list) -> list:
 
     # solution 1 : 53.3/100 -> solved 
     # 53.3 나오던 이유
-    # -> 59번째 줄에 answer.append(index_of_songs[:1])로 되어 있어서 list가 append 됨.
+    # -> 마지막 for문 if 절에 answer.append(index_of_songs[:1])로 되어 있어서 list가 append 됨.
     # -> 장르에 속한 노래가 하나인 경우, 모두 list로 answer에 append.
 
-    # dict_genres -> genre : [노래 개수, {노래 고유번호 : 재생 횟수}] 를 담는 Dictionary
+    # dict_genres -> genre : [장르 총 재생 횟수, {노래 고유번호 : 노래 재생 횟수}] 를 담는 Dictionary
     dict_genres = {
         genre : [0, {}] for genre in genres
     }
@@ -38,31 +38,38 @@ def solution(genres:list, plays:list) -> list:
     # print(dict_genres)
 
     for i, (genre, play) in enumerate(zip(genres, plays)):
-        dict_genres[genre][0] += play
-        dict_genres[genre][1][i] = play
+        dict_genres[genre][0] += play # genre별 총 재생 횟수
+        dict_genres[genre][1][i] = play # 고유번호 i인 노래의 재생 횟수 
         
-    
-    dict_genres = dict(sorted(dict_genres.items(), key=lambda x:x[1][0], reverse=True)) # dict_genres의 items를 정렬, 정렬 기준은 dict_genres[1][0] -> 장르별 재생 횟수, 내림차순 = True
+    # dict_genres의 items를 정렬, 정렬 기준은 dict_genres[1][0] -> 장르별 재생 횟수, 내림차순 = True
+    # -> 재생 횟수가 많은 장르부터 순서대로 정렬
+    dict_genres = dict(sorted(dict_genres.items(), key=lambda x:x[1][0], reverse=True)) 
 
-    print(dict_genres)
+    # print(dict_genres)
 
     # 각 장르마다 노래 재생 횟수에 따라 노래 고유번호 정렬 (내림차순)
+    # -> 장르 별로 노래 재생 횟수가 많은 노래부터 순서대로 정렬 
+    # -> 재생 횟수가 같은 경우 고유번호가 낮은 순으로 유지 됨
     for key in dict_genres.keys():
         dict_genres[key][1] = dict(sorted(dict_genres[key][1].items(), key=lambda x:x[1], reverse=True))
 
-    print(dict_genres)
+    # print(dict_genres)
 
-    answer = []
+    
+    best_album = []
 
-    for value in dict_genres.values():
-        index_of_songs = list(value[1].keys())
-        if len(index_of_songs) < 2:
-            answer.append(index_of_songs[0]) 
+    # 장르 별로 앞에서 노래 고유번호를 앞에서 두 개씩 answer에 append
+    for value in dict_genres.values(): 
+        index_of_songs = list(value[1].keys()) # 장르 별로 노래 고유번호를 담은 list
+        if len(index_of_songs) < 2: # 장르에 속한 노래가 하나인 경우
+            best_album.append(index_of_songs[0]) # 하나만 추가
         else : 
-            answer.append(index_of_songs[0])
-            answer.append(index_of_songs[1])
+            # 재생 횟수가 많은 순서대로 하나씩 추가
+            # -> slicing으로 추가할 경우 list가 append 된다.
+            best_album.append(index_of_songs[0]) 
+            best_album.append(index_of_songs[1])  
 
-    return answer
+    return best_album
 
 
 
