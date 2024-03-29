@@ -25,7 +25,7 @@ def solution(genres:list, plays:list) -> list:
         모든 장르는 재생된 횟수가 다름
     """
 
-    # solution 1 : 53.3 / 100
+    # solution 1 : 53.3/100 -> solved 
     # 53.3 나오던 이유
     # -> 59번째 줄에 answer.append(index_of_songs[:1])로 되어 있어서 list가 append 됨.
     # -> 장르에 속한 노래가 하나인 경우, 모두 list로 answer에 append.
