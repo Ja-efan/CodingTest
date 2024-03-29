@@ -21,21 +21,21 @@ def solution(participant:list, completion:list) -> str:
     Returns : 완주 하지 못한 선수의 이름(str)
     """
 
-    # solution 1 : using dictionary
-    runner = {
-        name : 0 for name in participant
-    }
-    for name in participant:
-        runner[name] += 1
+    # # solution 1 : using dictionary
+    # runner = {
+    #     name : 0 for name in participant
+    # }
+    # for name in participant:
+    #     runner[name] += 1
     
-    for name in completion:
-        if name in runner.keys():
-            runner[name] -= 1
+    # for name in completion:
+    #     if name in runner.keys():
+    #         runner[name] -= 1
 
 
-    for k, v in runner.items():
-        if v == 1 :
-            return k
+    # for k, v in runner.items():
+    #     if v == 1 :
+    #         return k
 
 
 
