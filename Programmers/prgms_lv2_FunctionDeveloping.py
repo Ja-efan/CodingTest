@@ -28,22 +28,35 @@ def solution(progresses:list, speeds:list) -> list:
 
         remaining_dates.append(necessary_dates)
 
-    print(remaining_dates)
+    # print(remaining_dates)
 
-
-    for i in range(len(remaining_dates)):
-        dates = remaining_dates[i]
-        count = 1
-        for j in range(i+1, len(remaining_dates)):
-            if dates < remaining_dates[j]:
-                answer.append(count)
+    idx = 0
+    next_idx = 1
+    while next_idx < len(remaining_dates):
+        if next_idx == len(remaining_dates)-1:
+            if remaining_dates[idx] > remaining_dates[next_idx]:
+                answer.append(len(remaining_dates[idx:]))
                 break
-            else :
-                count += 1
+            else : # remaining_dates[idx] <= remaining_dates[next_idx]
+                answer.append(len(remaining_dates[idx:next_idx]))
+                answer.append(1)
+                break
+        elif remaining_dates[idx] < remaining_dates[next_idx]:
+            answer.append(len(remaining_dates[idx:next_idx]))
+            idx = next_idx
+            next_idx = idx + 1
+        else : # remaining_dates[idx] >= remaining_dates[next_idx]
+            next_idx += 1
 
+        
+
+
+            
     return answer
 
 
 
 # test case 
 print(solution([93, 30, 55], [1, 30, 5]))
+print()
+print(solution([95, 90, 99, 99, 80, 99], [1, 1, 1, 1, 1, 1]))
