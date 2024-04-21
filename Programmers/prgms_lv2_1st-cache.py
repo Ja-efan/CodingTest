@@ -23,6 +23,9 @@ def solution(cacheSize, cities):
             city = city.lower()
             if city in cache: # cache hit !! -> time += 1
                 time += 1
+                if len(cache) == cacheSize :
+                    cache.pop(cache.index(city))
+                    cache.append(city)
             else : # chche miss -> tmie += 5
                 time += 5
                 if len(cache) == cacheSize :
@@ -46,3 +49,5 @@ print(solution(2, ["Jeju", "Pangyo", "NewYork", "newyork"] )) # 16
 # 25
 print(solution(0, ["Jeju", "Pangyo", "Seoul", "NewYork", "LA"] )) # 25
 
+# 27 
+print(solution(3, ["A", "B", "C", "A", "D", "G", "A"] ))
