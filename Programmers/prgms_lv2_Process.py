@@ -56,9 +56,8 @@ def solution(priorities:list, location:int) -> int:
         else :
             process_tuples.append((i,v))
 
- 
-
     return execute_queue.index(location) + 1
+
 
 # test case 
 print(solution([2, 1, 3, 2], 2))
