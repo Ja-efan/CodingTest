@@ -47,11 +47,6 @@ def solution(priorities:list, location:int) -> int:
     for i, p in enumerate(priorities):
         process_tuples.append((i,p))
 
-    # print(process_tuples)
-
-
-    idx = 0 
-    lenn = len(priorities)
     while process_tuples:
         current_max = max(priorities)
         (i,v) = process_tuples.pop(0)
@@ -60,8 +55,8 @@ def solution(priorities:list, location:int) -> int:
             priorities[i] = 0
         else :
             process_tuples.append((i,v))
-        idx += 1
-    # print(execute_queue)
+
+ 
 
     return execute_queue.index(location) + 1
 
