@@ -12,6 +12,8 @@ def solution(cacheSize, cities):
         각 도시 이름은 공백, 숫자, 특수문자 등이 없는 영문자로 구성, 대소문가 구분 x. 도시 이름은 최대 20자.
 
     Returns : 입력된 도시 이름 배열을 순서댇로 처리할 때, '총 실행시간' 출력 
+
+    !! 캐시 교체 알고리즘은 LRU(Least Recently Used)를 사용
     """
 
     cache = []
@@ -23,9 +25,8 @@ def solution(cacheSize, cities):
             city = city.lower()
             if city in cache: # cache hit !! -> time += 1
                 time += 1
-                if len(cache) == cacheSize :
-                    cache.pop(cache.index(city))
-                    cache.append(city)
+                cache.pop(cache.index(city))
+                cache.append(city)
             else : # chche miss -> tmie += 5
                 time += 5
                 if len(cache) == cacheSize :
@@ -48,6 +49,7 @@ print(solution(5, ["Jeju", "Pangyo", "Seoul", "NewYork", "LA", "SanFrancisco", "
 print(solution(2, ["Jeju", "Pangyo", "NewYork", "newyork"] )) # 16
 # 25
 print(solution(0, ["Jeju", "Pangyo", "Seoul", "NewYork", "LA"] )) # 25
-
 # 27 
 print(solution(3, ["A", "B", "C", "A", "D", "G", "A"] ))
+# 21
+print(solution(3, ['a','b','a','c','d'])) # 5 + 5 + 1 + 5 + 5 
