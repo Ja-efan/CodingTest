@@ -38,7 +38,7 @@ def solution(k:int, dungeons:list) -> int :
         cnt = 0
         pirodo = k 
         for i in t:
-            if k >= dungeons[i][0] and pirodo - dungeons[i][1] > 0:
+            if pirodo >= dungeons[i][0] and pirodo - dungeons[i][1] > 0:
                 pirodo -= dungeons[i][1]
                 cnt += 1
             else :
