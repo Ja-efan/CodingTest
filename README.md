@@ -5,3 +5,5 @@ python for coding test
 - programmers
 
 - python basic
+
+- algorithm
