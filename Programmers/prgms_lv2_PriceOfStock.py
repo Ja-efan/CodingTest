@@ -16,24 +16,39 @@ def solution(prices:list) -> list:
         * prices의 길이는 2이상 100,000이하
     """
 
-    # solution 1 : O(n^2) -> 효율성 3번 시간초과  
-    prices = deque(prices)
+    # # solution 1 : O(n^2) -> 효율성 3번 시간초과  
+    # prices = deque(prices)
+    # seconds = []
+    # while prices :
+    #     p = prices.popleft()
+    #     if not prices:
+    #         seconds.append(0)
+    #         break    
+    #     count = 0
+    #     for i in range(len(prices)):
+    #         count += 1
+    #         if p > prices[i]:
+    #             break 
+            
+    #     seconds.append(count)
+
+
+    # return seconds
+
+    # solution 2 : O(n^2), 시간초과 없음 100/100
     seconds = []
+    prices = deque(prices)
     while prices :
         p = prices.popleft()
-        if not prices:
-            seconds.append(0)
-            break    
-        count = 0
-        for i in range(len(prices)):
-            count += 1
-            if p > prices[i]:
-                break 
-            
-        seconds.append(count)
-
-
-    return seconds
+        stack = []
+        for p2 in prices:
+            stack.append(p2)
+            if p > p2 :
+                break
+        seconds.append(len(stack))
+        
+    return seconds 
 
 # test case 
 print(solution([1,2,3,2,3])) # [4,3,1,1,0]
+print(solution([4,2,3,1])) # [1,2,1,0]
