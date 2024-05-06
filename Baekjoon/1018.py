@@ -42,7 +42,6 @@ def solution():
                         else : 
                             curr = "W"  
             counts.append(count)
-
             # start with 'W'
             new_maps = [[0 for _ in range(8)] for _ in range(8)]
             count = 0
@@ -69,7 +68,7 @@ def solution():
                         else : 
                             curr = "W"  
 
-    
+            print(count)
             counts.append(count)
 
     return min(counts)
