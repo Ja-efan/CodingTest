@@ -46,9 +46,6 @@ def solution(jobs:list) -> int :
         answer += (time - request_time) + required_time
         time += required_time
 
-
-    # print(time)
-    # print(answer // len_)
     return answer // len_
         
 
