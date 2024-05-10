@@ -29,7 +29,7 @@ def solution(jobs:list) -> int :
             time += request_time+required_time
             answer += required_time
         
-        while time >= jobs[0][0]:
+        while jobs and time >= jobs[0][0]:
             a,b = hq.heappop(jobs)
             hq.heappush(heap, [b,a])
             if not jobs or jobs[0][0] > time :
@@ -53,14 +53,10 @@ def solution(jobs:list) -> int :
         
 
         
-
-
-
-
-
 # test case 
-# print(solution([[7, 8], [3, 5], [9, 6]])) # 9
+print(solution([[7, 8], [3, 5], [9, 6]])) # 9
 print(solution([[0, 3], [1, 9], [2, 6]])) # 9
+print(solution([[0,1]]))
 
 # import heapq as hq
 # a = [[0, 3], [1, 9], [4, 6]]
