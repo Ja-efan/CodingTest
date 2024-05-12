@@ -15,21 +15,7 @@ def solution_1244():
         cards, change = tc 
         MAX = sorted(cards, reverse=True) # 카드로 구성할 수 있는 최댓값
         
-        fixed = 0
-        while change:
-            if fixed == len(cards)-1:
-                tmp = cards[-1]
-                cards[-1] = cards[-2]
-                cards[-2] = tmp
-                continue
-            cards = cards[fixed:]
-            max_idx = cards.index(max(cards)) + fixed
-            tmp = cards[0]
-            cards[0] = cards[max_idx]
-            cards[max_idx] = tmp 
-            fixed += 1
-            change -= 1
-            # print(cards)
+        
 
 
 
