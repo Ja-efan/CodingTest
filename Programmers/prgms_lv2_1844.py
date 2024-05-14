@@ -24,7 +24,7 @@ def solution(maps) -> int:
     dq = deque()
     n = len(maps) # height
     m = len(maps[0]) # width 
-    visited = [[0 for _ in range(m)] for _ in range(n)] # 방문 처리 배열 -> 해당 위치 까지 몇 번의 이동이 있었는지 저장 (새로운 값이 저장되어 있는 값보다 작다면 새로운 값을 입력)
+    visited = [[0 for _ in range(m)] for _ in range(n)] # 방문 처리 배열 
     dis = [[1 for _ in range(m)] for _ in range(n)]
     dq.append((0,0))
     moves = [(0,1), (1,0), (-1,0), (0,-1)]
