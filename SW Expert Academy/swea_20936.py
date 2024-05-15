@@ -61,8 +61,40 @@ def solution_20936():
         else :
             print()
 
+def solution_20936_2():
+    t = int(input())
+    for tc in range(1, t+1):
+        N = int(input())
+        boxes = list(map(int, input().split()))
+        # pos = [i for i in boxes] # position list
+        # pos.append(N+1)
+        boxes.append(N+1)
+        E = N # empty position
+        cnt = 0
+        result = []
+        for i in range(1, N+1):
+            while boxes[i-1] != i:
+                if E != i-1:
+                    # 1. i-1번째 숫자(boxes[i-1])를 빈 칸으로 이동
+                    boxes[E] = boxes[i-1]
+                    result.append(i)
+                # 2. 숫자 i를 i-1번 칸으로 이동
+                i_idx = boxes.index(i)
+                boxes[i-1] = boxes[i_idx]
+                cnt += 1
+                result.append(i_idx+1)
+                # 3. 숫자 i가 있던 칸을 빈 곳으로 지정
+                E = i_idx
+                boxes[i_idx] = N+1
 
-solution_20936()
+        print(cnt)
+        print(*result, sep=" ")
+
+
+def solution_3():
+
+
+solution_3()
 
 
 
