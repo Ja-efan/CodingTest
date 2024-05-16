@@ -2,26 +2,6 @@
 # 증가하는 사탕 수열
 # D3
 
-
-# def solution_20551():
-#     t = int(input())
-#     for tc in range(1, t+1):
-#         candies = list(map(int, input().split()))
-
-#         cnt = 0
-#         while candies[2] > candies[1]:
-#             candies[1] -= 1
-#             cnt += 1
-        
-#         while candies[1] > candies[0]:
-#             candies[0] -= 1
-#             cnt += 1
-        
-#         if 0 in candies:
-#             print(f"#{tc} {-1}")
-#         else :
-#             print(f"#{tc} {cnt}")
-
 def solution_20551():
     t = int(input())
     for tc in range(1,t+1):
