@@ -2,53 +2,24 @@
 # 회문의 회문
 # D3
 
-# def is_palindrome(s) -> bool:
-#     '''
-#     길이가 홀수 N인 문자열 S가 회문이라는 것은 다음을 의미한다.
-#     - S는 회문이다.
-#     - S의 처음 (N-1)/2글자가 회문이다.
-#     - S의 마지막 (N-1)/2글자가 회문이다.
-#     '''
-#     # cond 1 : S는 회문이다.
-#     n = len(s)
-#     if n == 1:
-#         return True
-    
-#     if s == s[::-1]:
-#         if is_palindrome(s[:(n-1)//2]) and is_palindrome(s[-(n-1)//2:]):
-#             return True
-#         else :
-#             return False
-#     else :
-#         return False
-    
-def is_palindrome(s) -> bool:
-    n = len(s)
-    if n == 1:
-        return True
-    elif n == 2 :
-        if s[0] == s[1]:
-            return True
-        else : 
-            return False
-        
-    elif s == s[::-1]:
-        if is_palindrome(s[:(n-1)//2]) and is_palindrome(s[-(n-1)//2:]):
-            return True
-        else :
-            False
-    else :
-        return False
-    
-def solution_20019(): 
-
-    t = int(input())        
+def solution_20019_2():
+    """
+    문제에 주어진 조건만 만족하면 된다.
+    정말 회문의 회문 인지만 체크 하자!!
+    """
+    t = int(input())  # 사용자 입력
     for tc in range(1, t+1):
-        s = input()
-        result = is_palindrome(s)
-        if result :
-            print(f"#{tc} YES")
+        s = input()  # 사용자 입력 문자열
+        len_ = len(s)  # 문자열의 길이
+        if s == s[::-1]:  # 문자열이 회문인 경우
+            left = s[:(len_//2)]  # 문자열의 처음 (N-1)/2 글자
+            right = s[(len_//2)+1:]  # 문자열의 마지막 (N-1)/2 글자
+            if left == left[::-1] and right == right[::-1]:
+                print(f"#{tc} YES")  # 둘다 회문인 경우 YES 출력
+            else :
+                print(f"#{tc} NO")  # 하나라도 회문이 아닌 경우 NO 출력
         else :
-            print(f"#{tc} NO")
+            print(f"#{tc} NO")  # 문자열 s가 회문이 아닌 경우 NO 출력
 
-solution_20019()
+
+solution_20019_2()
