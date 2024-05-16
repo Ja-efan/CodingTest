@@ -92,8 +92,34 @@ def solution_20936_2():
 
 
 def solution_3():
+    t = int(input())
+    for tc in range(1,t+1):
+        N = int(input()) # 상자의 개수
+        # 상자를 넣을 수 있는 칸
+        boxes = list(map(int, input().split()))
+        boxes.append(N+1)
+        empty_pos = N
+        moves = []
 
-
+        for i in range(1, N+1):
+            while boxes[i-1] != i:
+                if empty_pos == i-1:
+                    i_idx = boxes.index(i)
+                    boxes[empty_pos] = i
+                    moves.append(i_idx+1)
+                    empty_pos = i_idx
+                    boxes[empty_pos] = N+1
+                else:
+                    # 현재 위치 <-> empty : i-1 <-> empty_pos
+                    box_num = boxes[i-1]
+                    boxes[empty_pos] = box_num
+                    moves.append(i)
+                    i_idx = boxes.index(i)
+                    boxes[i-1] = i
+                    moves.append(i_idx+1)
+                    empty_pos = i_idx
+        print(len(moves))
+        print(*moves, sep=" ")
 solution_3()
 
 
