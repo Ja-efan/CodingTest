@@ -16,22 +16,22 @@ def solution():
         base, k = input().split()
         k = int(k)
         base = [i for i in base]
-        bell_pos = base.index('o') # 현재 방울 위치
-        # print(k)
-        # print(base)
-        # print(bell_pos)
-        if k == 0 :
+        bell_pos = base.index('o')  # 현재 방울 위치
+
+        if k == 0:  # 방울 소리가 들리지 않음 -> 이동 x
             print(f"#{tc} {bell_pos}")
             continue
-        elif bell_pos == 1:
-            if k % 2 == 0 :
+        elif bell_pos == 1:  # 초기 위치가 가운데 컵인 경우
+            if k % 2 == 0:  # 방울이 짝수번 울리면 제자리(가운데)로 돌아옴
                 bell_pos = 1
-            else :
+            else:  # 방울이 홀수번 울리면 왼쪽 혹은 오른쪽 컵으로 이동, 가장 왼쪽 컵은 왼쪽 컵
                 bell_pos = 0
-        else:
-            if k % 2 == 0: # k is even.
-                bell_pos = 0
-            else :
+        else:  # 초기 위치가 가운데가 아닌 경우
+            if k % 2 == 0:  # 방울이 짝수번 울리면 방울이 제자리로 돌아오거나 반대편 컵에 위치
+                bell_pos = 0  # 가장 왼쪽 컵은 왼쪽 컵
+            else:  # 방울이 홀수번 울리면 가운데 컵에 위치하게 됨
                 bell_pos = 1
         print(f"#{tc} {bell_pos}")
+
+
 solution()
