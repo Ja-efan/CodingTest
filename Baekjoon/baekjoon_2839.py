@@ -5,32 +5,27 @@
 def solution():
     N = int(input())
 
-    cnt5 = 0
-    sum_ = 0
-    while sum_ < N:  # 5키로 봉지를 최대한 가져간다.
-        sum_ += 5
-        cnt5 += 1
-    if sum_ == N:
-        print(cnt5)
-        return
-    elif (N - sum_) % 3 == 0:  # 나머지를 3으로 채울 수 있다면
-        cnt3 = (N-sum_) / 3
-        print(int(cnt5 + cnt3))
+    """
+    5키로 / 3키로로 N을 채운다. 
+    채우지 못하면 -1 
+    """
+    if N % 5 == 0:
+        print(f"{N//5}")
         return
 
-    while cnt5:
-        sum_ -= 5
-        cnt5 -= 1
-        if ((N-sum_) % 3) == 0:
-            cnt3 = int((N-sum_) / 3)
-            print(cnt5+cnt3)
+    # divmod 사용
+    cnt5, remain = divmod(N, 5)
+
+    while remain % 3 != 0:
+        if remain == N:
+            print(-1)
             return
+        remain += 5
+        cnt5 -= 1
 
-    if N % 3 == 0:
-        cnt3 = int(N / 3)
-        print(cnt3)
+    cnt3 = remain // 3
 
-    else:
+    print(cnt5+cnt3)
 
 
 solution()
