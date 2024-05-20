@@ -22,6 +22,7 @@ def solution():
         if dn == 0 :
             print(i+1)
 
+
 solution()
 
         
