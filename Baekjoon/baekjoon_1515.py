@@ -13,16 +13,16 @@ def solution():
     num_dq = deque(num)
 
 
-    test_n = 0
+    test_n = 0  # 비교할 숫자 
     
-    while num_dq:
+    while num_dq:  # 원소가 남아 있는 동안 수행
         test_n += 1
         test_n_str = str(test_n)
         # pop_cnt = 0
         for i in range(len(test_n_str)):
-            if not num_dq:
+            if not num_dq: # 2자리 이상의 test_n에 대해서 pop 후 남아 있는 경우를 대비 
                 break
-            if test_n_str[i] == num_dq[0]:
+            if test_n_str[i] == num_dq[0]:  
                 num_dq.popleft()
         
     print(test_n)
