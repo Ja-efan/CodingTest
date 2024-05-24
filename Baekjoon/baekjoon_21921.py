@@ -3,7 +3,7 @@
 # Silver III
 
 import sys
-from collections import defaultdict
+from collections import defaultdict, Counter
 
 input = sys.stdin.readline
 output = sys.stdout.write
@@ -28,5 +28,36 @@ def solution(): # time out
         output(str(max_visitors)+'\n')
         output(str(max_dict[max_visitors]))
         
+def solution2():
 
-solution()
+    import sys
+    from collections import defaultdict, Counter
+
+    input = sys.stdin.readline
+    output = sys.stdout.write
+
+    N, X = map(int, input().split())
+    visitors = list(map(int, input().split()))
+
+    accm = [visitors[0]]
+    for v in visitors[1:]:
+        accm.append(accm[-1]+v)
+
+    X_visitors = []
+    for i in range(X-1, N):
+        if i == X-1 :
+            X_visitors.append(accm[i])
+        else :
+            X_visitors.append(accm[i]-accm[i-X])
+    
+    max_visit = max(X_visitors)
+    if max_visit == 0:
+        output("SAD")
+    else :
+        count = Counter(X_visitors)
+        output(str(max_visit) + '\n')
+        output(str(count[max_visit]))
+
+    
+
+solution2()
