@@ -9,7 +9,9 @@ input = sys.stdin.readline
 output = sys.stdout.write
 
 
-def solution2():
+def solution(): 
+
+    # 사용자 입력
     N, M = map(int, input().split())
 
     titles = []
@@ -21,10 +23,12 @@ def solution2():
     for _ in range(M):
         powers.append(int(input()))
 
+
+    # 각 전투력에 맞는 칭호를 찾기 위해 이진탐색 수행
     for power in powers:
         left = 0
         right = N-1
-        while left <= right:
+        while left <= right: 
             mid = (left + right) // 2
             if power > titles[mid][1]:
                 left = mid + 1
@@ -32,7 +36,9 @@ def solution2():
                 right = mid -1
         mid = left
         output(titles[mid][0]+'\n')
-solution2()
+
+
+solution()
 
 
     
