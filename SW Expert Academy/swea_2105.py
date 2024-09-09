@@ -31,6 +31,10 @@ def dfs(curr_row, curr_col, curr_direction, dessert_set, start_coord):
     if (curr_row, curr_col) != start_coord and dessert_map[curr_row][curr_col] in dessert_set:
         return
 
+    # 가지 치기
+    if curr_direction == 2 and len(dessert_set) <= max_num_dessert // 2:
+        return
+
     # 현재 좌표의 디저트를 디저트 집합에 추가
     dessert_set.add(dessert_map[curr_row][curr_col])
 
@@ -85,6 +89,7 @@ def main():
 
 if __name__ == "__main__":
     import sys
+
     sys.stdin = open("./testcases/input_2105.txt")
 
     # global variables
